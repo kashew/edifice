@@ -1,7 +1,10 @@
 import { Request, Response } from 'express'
+import { User } from '../models'
 
-const index = function(_req: Request, res: Response) {
-  res.send("There's a snake in my boot!")
+const index = async function(_req: Request, res: Response) {
+  const users = await User.findAll()
+
+  res.send(users)
 }
 
 export {

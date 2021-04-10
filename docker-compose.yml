@@ -10,3 +10,17 @@ services:
       NODE_ENV: production
     ports:
       - 3000:3000
+
+  database:
+    image: postgres:13.2-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+    ports:
+      - 5432:5432
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
