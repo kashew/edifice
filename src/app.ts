@@ -1,10 +1,13 @@
 import express from 'express'
 import indexRouter from './routes'
+import SDC from 'statsd-client'
 
 const app = express()
 const port = 3000
+const statsd = new SDC({ host: 'graphite-statsd', port: 8125, prefix: 'edifice' })
 
-app.use('/', indexRouter);
+app.use('/', indexRouter)
+app.use(statsd.helpers.getExpressMiddleware('edifice', { timeByUrl: true }))
 
 app
   .listen(port, () => {

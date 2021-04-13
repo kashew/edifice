@@ -24,3 +24,17 @@ services:
     restart: always
     ports:
       - 8080:8080
+
+  graphite-statsd:
+    image: graphiteapp/graphite-statsd
+    ports:
+      - 80:80
+      - 2003-2004:2003-2004
+      - 2023-2024:2023-2024
+      - 8125:825/udp
+      - 8126:8126
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - 3001:3000
