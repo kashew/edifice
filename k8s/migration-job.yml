@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: edifice-migration
+spec:
+  template:
+    spec:
+      containers:
+      - name: migration
+        image: kashew1/edifice:latest
+        command: ["npm", "run", "db:migrate"]
+      restartPolicy: Never
+  backoffLimit: 4

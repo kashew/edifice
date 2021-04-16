@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: adminer-svc
+  labels:
+    app: edifice
+spec:
+  type: LoadBalancer 
+  ports:
+  - port: 81
+    targetPort: 8080
+    protocol: TCP
+  selector:
+    app: edifice

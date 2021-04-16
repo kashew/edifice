@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adminer-dep
+  labels:
+    app: edifice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: edifice
+  template:
+    metadata:
+      labels:
+        app: edifice
+    spec:
+      containers:
+      - name: adminer
+        image: adminer
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
+      restartPolicy: Always

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: edifice-svc
+  labels:
+    app: edifice
+spec:
+  type: LoadBalancer 
+  ports:
+  - port: 80
+    name: edifice-app
+    targetPort: 3000
+    protocol: TCP
+  selector:
+    app: edifice
