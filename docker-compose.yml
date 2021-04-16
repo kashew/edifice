@@ -8,8 +8,20 @@ services:
       dockerfile: ./Dockerfile
     environment:
       NODE_ENV: production
+      POSTGRES_PASSWORD: example
+    depends_on:
+      - database
+      - migration
     ports:
       - 3000:3000
+    command: node src/app.js
+
+  migration:
+    image: edifice
+    build: .
+    command: npm run db:migrate
+    depends_on:
+      - database
 
   database:
     image: postgres:13.2-alpine
