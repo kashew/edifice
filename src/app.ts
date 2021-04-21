@@ -1,6 +1,6 @@
+import SDC from 'statsd-client'
 import express from 'express'
 import indexRouter from './routes'
-import SDC from 'statsd-client'
 
 const app = express()
 const port = 3000

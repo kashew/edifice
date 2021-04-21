@@ -9,7 +9,7 @@ interface UserAttributes {
 }
 
 // Some attributes are optional in `User.build` and `User.create` calls
-interface UserCreationAttributes extends Optional<UserAttributes, "id"> {}
+interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
 
 export class User extends Model<UserAttributes, UserCreationAttributes>
   implements UserAttributes {
@@ -45,7 +45,7 @@ export function initUser(sequelize: Sequelize): void {
       }
     },
     {
-      tableName: "users",
+      tableName: 'users',
       sequelize, // passing the `sequelize` instance is required
     }
   )
