@@ -36,6 +36,7 @@
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.6.2",
     "sequelize-cli": "^6.2.0",
-    "statsd-client": "^0.4.5"
+    "statsd-client": "^0.4.5",
+    "winston": "^3.3.3"
   }
 }
