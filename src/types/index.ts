@@ -1,0 +1,3 @@
+export {
+  DatabaseConfig
+} from './databaseConfig'
