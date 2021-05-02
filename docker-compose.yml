@@ -1,11 +1,11 @@
 version: '3.4'
 
 services:
-  edifice:
-    image: edifice
+  edifice-api:
+    image: edifice-api
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./api/Dockerfile
     environment:
       NODE_ENV: production
       POSTGRES_PASSWORD: example
