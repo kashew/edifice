@@ -47,3 +47,16 @@ npm run db:seed:all
 # Load container for Application
 docker-compose up --build -d edifice
 ```
+
+### Hasura
+```bash
+# Loads container for Postgres & Hasura
+# This will also perform migrations and import metadata
+docker-compose up --build -d hasura
+
+# Run Seeds for Tables
+hasura seeds apply
+
+# Hasura Console Running On:
+# http://localhost:8081
+```

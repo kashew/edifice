@@ -16,6 +16,32 @@ services:
       - 3000:3000
     command: node src/app.js
 
+  edifice-ui:
+    image: edifice-ui
+    build:
+      context: .
+      dockerfile: ./ui/Dockerfile
+    environment:
+      NODE_ENV: production
+    depends_on:
+      - edifice-api
+    ports:
+      - 8080:80
+    command: nginx -g daemon off
+
+  hasura:
+    image: hasura/graphql-engine:latest.cli-migrations-v2
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:example@database:5432/postgres
+      HASURA_GRAPHQL_ENABLE_CONSOLE: 'true'
+    volumes:
+      - ./hasura/migrations:/hasura-migrations
+      - ./hasura/metadata:/hasura-metadata
+    depends_on:
+      - database
+    ports:
+      - 8081:8080
+
   migration:
     image: edifice
     build: .
