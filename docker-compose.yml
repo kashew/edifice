@@ -4,8 +4,8 @@ services:
   edifice-api:
     image: edifice-api
     build:
-      context: .
-      dockerfile: ./api/Dockerfile
+      context: ./api
+      dockerfile: Dockerfile
     environment:
       NODE_ENV: production
       POSTGRES_PASSWORD: example
@@ -19,15 +19,15 @@ services:
   edifice-ui:
     image: edifice-ui
     build:
-      context: .
-      dockerfile: ./ui/Dockerfile
+      context: ./ui
+      dockerfile: Dockerfile
     environment:
       NODE_ENV: production
     depends_on:
       - edifice-api
     ports:
       - 8080:80
-    command: nginx -g daemon off
+    command: nginx -g 'daemon off;'
 
   hasura:
     image: hasura/graphql-engine:latest.cli-migrations-v2
