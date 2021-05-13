@@ -60,3 +60,26 @@ hasura seeds apply
 # Hasura Console Running On:
 # http://localhost:8081
 ```
+
+### Okta
+Okta has been integrated into the VueJS UI.  You can bring up the UI with the following commands:
+```bash
+cd ui
+npm i
+npm run serve
+
+# Future plan to get running in docker
+
+# VueJS App Running On:
+# http://localhost:8080
+```
+
+**Notes about Okta:**
+
+* Okta is mostly configuration under the admin space.
+
+* Admin Space: [https://dev-42162808-admin.okta.com/](https://dev-42162808-admin.okta.com/)
+
+* To have Okta-hosted sign-in with Identity Providers (Like Google SSO), a custom domain needed to be setup and configured (https://login.taxchum.com)
+
+* 
