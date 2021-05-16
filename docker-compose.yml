@@ -16,6 +16,16 @@ services:
       - 3000:3000
     command: node src/app.js
 
+  edifice-rails-api:
+    image: edifice-rails-api
+    build:
+      context: ./rails_api
+      dockerfile: Dockerfile
+    depends_on:
+      - database
+    ports:
+      - 3001:3000
+
   edifice-ui:
     image: edifice-ui
     build:
@@ -23,8 +33,6 @@ services:
       dockerfile: Dockerfile
     environment:
       NODE_ENV: production
-    depends_on:
-      - edifice-api
     ports:
       - 8080:80
     command: nginx -g 'daemon off;'

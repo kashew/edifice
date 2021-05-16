@@ -48,6 +48,8 @@ npm run db:seed:all
 docker-compose up --build -d edifice
 ```
 
+---
+
 ### Hasura
 ```bash
 # Loads container for Postgres & Hasura
@@ -60,6 +62,8 @@ hasura seeds apply
 # Hasura Console Running On:
 # http://localhost:8081
 ```
+
+---
 
 ### Okta
 Okta has been integrated into the VueJS UI.  You can bring up the UI with the following commands:
@@ -82,4 +86,20 @@ npm run serve
 
 * To have Okta-hosted sign-in with Identity Providers (Like Google SSO), a custom domain needed to be setup and configured (https://login.taxchum.com)
 
-* 
+---
+
+### Rails API
+The Rails API can be ran through docker.  It will also run a dockerized Postgres database which the API is dependent on:
+```bash
+# Start Rails API
+docker-compose up -d --build edifice-rails-api
+
+# Retrieve List of Agents
+curl http://localhost:3001/agents
+
+# Retrieve List of Callbacks
+curl http://localhost:3001/callbacks
+
+# Create New Agent
+curl -X POST -d "username=agentpost&email=agentpost%40company.com&first_name=Paul&last_name=Poster&phone_extension=x4321" http://localhost:3001/agents
+```

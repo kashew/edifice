@@ -1,5 +1,6 @@
 FROM ruby:3.0.1-alpine3.13
 ENV BUNDLER_VERSION=2.2.17
+ENV RAILS_ENV=production
 
 RUN apk add --update --no-cache \
       binutils-gold \
@@ -16,6 +17,7 @@ RUN apk add --update --no-cache \
       make \
       netcat-openbsd \
       sqlite-dev \
+      postgresql-dev \
       openssl \
       pkgconfig \
       tzdata
