@@ -3,7 +3,8 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
-      <a class="item link" v-if="!authState.isAuthenticated" @click="login()">Login</a>
+      <router-link v-if="!authState.isAuthenticated" to="/Dashboard">Login</router-link>
+      <!-- <a class="item link" v-if="!authState.isAuthenticated" @click="login()">Login</a> -->
       <a class="item link" v-if="authState.isAuthenticated" @click="logout()">Logout</a>
       <span v-if="authState.isAuthenticated"> | {{name}}</span>
     </div>
@@ -76,7 +77,7 @@ export default {
       }
     },
     login () {
-      this.$auth.signInWithRedirect('/')
+      this.$auth.signInWithRedirect('/Dashboard')
     },
     async logout () {
       await this.$auth.signOut()

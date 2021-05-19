@@ -91,7 +91,7 @@ npm run serve
 ### Rails API
 The Rails API can be ran through docker.  It will also run a dockerized Postgres database which the API is dependent on:
 ```bash
-# Start Rails API
+# Start Rails API (Also starts Postgres DB)
 docker-compose up -d --build edifice-rails-api
 
 # Retrieve List of Agents
