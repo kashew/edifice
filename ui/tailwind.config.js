@@ -8,12 +8,12 @@ module.exports = {
       colors: {
         rose: colors.rose
       }
-    },
+    }
   },
   variants: {
-    extend: {},
+    extend: {}
   },
   plugins: [
     require('@tailwindcss/forms')
-  ],
+  ]
 }

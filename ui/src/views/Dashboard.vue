@@ -482,6 +482,63 @@
         </main>
         <aside class="hidden xl:block xl:col-span-4">
           <div class="sticky top-4 space-y-4">
+            <section aria-labelledby="leads-heading">
+              <div class="bg-white rounded-lg shadow">
+                <div class="p-6">
+                  <h2
+                    id="leads-heading"
+                    class="text-base font-medium text-gray-900"
+                  >
+                    Leads
+                  </h2>
+                  <div class="mt-6 flow-root">
+                    <ul class="-my-4 divide-y divide-gray-200">
+                      <li
+                        v-for="lead in leads"
+                        :key="lead.uuid"
+                        class="flex items-center py-4 space-x-3"
+                      >
+                        <div class="flex-shrink-0">
+                          <!-- <img
+                            class="h-8 w-8 rounded-full"
+                            :src="user.imageUrl"
+                            alt=""
+                          /> -->
+                        </div>
+                        <div class="min-w-0 flex-1">
+                          <p class="text-sm font-medium text-gray-900">
+                            <a href="#">{{ `${lead.first_name} ${lead.last_name}` }}</a>
+                          </p>
+                          <p class="text-sm text-gray-500">
+                            <a href="#">{{ `@${lead.first_name}.${lead.last_name}` }}</a>
+                          </p>
+                        </div>
+                        <div class="flex-shrink-0">
+                          <button
+                            type="button"
+                            class="inline-flex items-center px-3 py-0.5 rounded-full bg-rose-50 text-sm font-medium text-rose-700 hover:bg-rose-100"
+                          >
+                            <PlusIcon
+                              class="-ml-1 mr-0.5 h-5 w-5 text-rose-400"
+                              aria-hidden="true"
+                            />
+                            <span> Follow </span>
+                          </button>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="mt-6">
+                    <a
+                      href="#"
+                      class="w-full block text-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+                    >
+                      View all
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </section>
             <section aria-labelledby="who-to-follow-heading">
               <div class="bg-white rounded-lg shadow">
                 <div class="p-6">
@@ -602,6 +659,9 @@
 </template>
 
 <script>
+import { computed } from 'vue'
+import { useStore } from '@/store'
+
 import {
   Menu,
   MenuButton,
@@ -611,6 +671,7 @@ import {
   PopoverButton,
   PopoverPanel
 } from '@headlessui/vue'
+
 import {
   ChatAltIcon,
   CodeIcon,
@@ -623,6 +684,7 @@ import {
   StarIcon,
   ThumbUpIcon
 } from '@heroicons/vue/solid'
+
 import {
   BellIcon,
   FireIcon,
@@ -735,6 +797,9 @@ export default {
     XIcon
   },
   setup () {
+    const store = useStore()
+    const leads = computed(() => store.state.lead.leads)
+
     return {
       user,
       navigation,
@@ -743,7 +808,8 @@ export default {
       tabs,
       questions,
       whoToFollow,
-      trendingPosts
+      trendingPosts,
+      leads
     }
   }
 }
